@@ -5,12 +5,19 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -100,15 +107,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean CheckUserName(String Uname,String Pword){
         String command="Select UserName,Password from User where Username= '"+Uname+"' AND Password ='"+Pword+"'";
 
-      Cursor cs=  myDataBase.rawQuery(command,null);
-      if (cs.getCount()==0){
-          return false;
-      }else{
-          return true;
-      }
+        Cursor cs=  myDataBase.rawQuery(command,null);
+        if (cs.getCount()==0){
+            return false;
+        }else{
+            return true;
+        }
 
     }
 
+    public boolean CheckEmployee(String EmpID){
+        String command = "Select * from Employee where EmpID="+EmpID;
+        Cursor cs = myDataBase.rawQuery(command,null);
+        if (cs.getCount()==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean CheckEmployeeTimedIn(String EmpID){
+        String command = "Select TimeIn from Attendance where EmpID="+EmpID;
+        Cursor cs = myDataBase.rawQuery(command,null);
+        cs.moveToFirst();
+        String TimedIN=cs.getString(0);
+        if (TimedIN==""){
+            return  false;
+        }else{
+            return true;
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void AddTimeIn(String EmpID){
+        LocalDate CurrentDate= LocalDate.now();
+        LocalTime CurrentTime=LocalTime.now();
+        Time SQLTime= Time.valueOf(CurrentTime.toString());
+        Date SQLDate=Date.valueOf(CurrentDate.toString());
+        String command = "Insert into Attendance (EmpID,Date,TimeIn,TimeOut,Status) VALUES (" +EmpID+ "," +SQLDate+ "," +SQLTime+ ",'',A";
+        myDataBase.execSQL(command);
+    }
+
+    public void AddTimeOut(String EmpID){
+
+        //ToDo: Add Code;
+    }
+
+
+    public boolean CheckDriverAndAmbulance(String Driver_ID, String Amb_ID){
+        String cmd1= "Select Availability from Driver where DriverID='"+Driver_ID+"'";
+        String cmd2= "Select CurrentStatus from Ambulance where AmbulanceID='"+Amb_ID+"'";
+        Cursor cs1= myDataBase.rawQuery(cmd1,null);
+        Cursor cs2= myDataBase.rawQuery(cmd2,null);
+        cs1.moveToFirst();
+        cs2.moveToFirst();
+
+        if (cs1.getString(0)=="1" && cs2.getString(0)=="RY"){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
     public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
         return myDataBase.query("PLEASE CHANGE TO YOUR TABLE NAME", null, null, null, null, null, null);
