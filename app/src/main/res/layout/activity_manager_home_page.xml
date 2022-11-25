@@ -7,7 +7,7 @@
     tools:context=".ManagerHomePage">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/MgrWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -25,17 +25,19 @@
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
         android:layout_marginBottom="520dp"
+        android:onClick="AddAmbulanceActivity"
         android:text="Add Ambulance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/MgrWelcome"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:onClick="DelAmbulanceActivity"
         android:text="Remove Ambulance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +49,7 @@
         android:id="@+id/button5"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:onClick="AddEmployeeActivity"
         android:text="Add Employee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +61,7 @@
         android:id="@+id/button9"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:onClick="DelEmployeeActivity"
         android:text="Remove Employee"
         app:layout_constraintBottom_toTopOf="@+id/button10"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +73,8 @@
         android:id="@+id/button10"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="View Employees"
+        android:onClick="EditEmployeeActivity"
+        android:text="Edit Employee"
         app:layout_constraintBottom_toTopOf="@+id/button11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +84,7 @@
         android:id="@+id/button11"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:onClick="ViewAmbulanceActivity"
         android:text="View Ambulances"
         app:layout_constraintBottom_toTopOf="@+id/button12"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,6 +95,7 @@
         android:id="@+id/button12"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:onClick="ViewTasksActivity"
         android:text="View Tasks"
         app:layout_constraintBottom_toTopOf="@+id/button13"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +106,7 @@
         android:id="@+id/button13"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:onClick="VerifyTasksActivity"
         android:text="Verify Tasks"
         app:layout_constraintBottom_toTopOf="@+id/button14"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,10 +117,30 @@
         android:id="@+id/button14"
         android:layout_width="200dp"
         android:layout_height="50dp"
+<<<<<<< Updated upstream
         android:layout_marginBottom="120dp"
         android:text="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+=======
+        android:layout_marginBottom="52dp"
+        android:onClick="ExitApp"
+        android:text="Exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button29"
+        android:layout_width="212dp"
+        android:layout_height="50dp"
+        android:onClick="ManageAmbulanceActivity"
+        android:text="Manage Ambulances"
+        app:layout_constraintBottom_toTopOf="@+id/button14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+>>>>>>> Stashed changes
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button13" />
 

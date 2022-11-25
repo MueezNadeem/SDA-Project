@@ -1,8 +1,9 @@
 package com.example.sda_project;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     private String Name;
     private Date DOB;
     private String CNIC;
@@ -14,6 +15,18 @@ public class User {
     private Account myAcc;
 
     public User() {
+    }
+    public void SetAccID(int ID){
+    this.myAcc.setAccountID(ID);
+    }
+
+    public void SetAccType(String Type){
+        if (Type=="C"){
+            this.myAcc.setType(AccountType.Consumer);
+        }else if (Type=="E"){
+            this.myAcc.setType(AccountType.Employee);
+        }
+
     }
 
     public String getName() {

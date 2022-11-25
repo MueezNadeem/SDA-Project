@@ -2,6 +2,7 @@ package com.example.sda_project;
 
 public class Task {
     private int TaskID;
+    private Patient OrderPatient;
     private String Name;
     private String Location;
     private TaskStatus CurrentStatus;
@@ -63,6 +64,14 @@ public class Task {
 
     public void setAmbulanceID(int ambulanceID) {
         AmbulanceID = ambulanceID;
+    }
+
+    public Patient getOrderPatient() {
+        return OrderPatient;
+    }
+
+    public void setOrderPatient(Patient orderPatient) {
+        OrderPatient = orderPatient;
     }
     // Add Team object?
 }
