@@ -5,7 +5,7 @@ public class EmployeeManager {
     private DatabaseHelper DB =myC.getInstance();
 
     public EmployeeType CheckEmployeeType(String EmpID){
-        String EmpFromDB=DB.EmployeeTypeString(EmpID);
+        // String EmpFromDB=DB.EmployeeTypeString(EmpID);
 
         return EmployeeType.Admin;
     }
